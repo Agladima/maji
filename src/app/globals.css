@@ -24,3 +24,71 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes starTwinkle {
+  0% {
+    opacity: 0.4;
+    transform: scale(0.6);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+  100% {
+    opacity: 0.3;
+    transform: scale(0.7);
+  }
+}
+
+.star {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: transparent;
+  transform: translate(-50%, -50%) rotate(45deg);
+  animation: starTwinkle 7s ease-in-out infinite;
+  opacity: 0.9;
+}
+
+.star::before,
+.star::after {
+  content: "";
+  position: absolute;
+  background: #fff8c4;
+  box-shadow: 0 0 12px rgba(255, 245, 180, 0.9);
+  border-radius: 2px;
+}
+
+/* Vertical beam */
+.star::before {
+  width: 2px;
+  height: 10px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Horizontal beam */
+.star::after {
+  width: 10px;
+  height: 2px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Soft slow twinkle */
+@keyframes starTwinkle {
+  0% {
+    opacity: 0.3;
+    transform: translate(-50%, -50%) rotate(45deg) scale(0.7);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(45deg) scale(1.3);
+  }
+  100% {
+    opacity: 0.4;
+    transform: translate(-50%, -50%) rotate(45deg) scale(0.7);
+  }
+}
